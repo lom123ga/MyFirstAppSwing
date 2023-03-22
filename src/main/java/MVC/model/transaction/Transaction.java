@@ -65,12 +65,9 @@ public class Transaction {
     }
     
     //create CoinBase
-    public static Transaction newCoinbaseTX(String to, String data) {
-        if (StringUtils.isBlank(data)) {
-            data = String.format("Reward to '%s'", to);
-        }
+    public static Transaction newCoinbaseTX(String to, byte[] data) {
         
-        TXInput txInput = new TXInput(new byte[]{}, -1, null, data.getBytes());
+        TXInput txInput = new TXInput(new byte[]{}, -1, null, data);
       
         TXOutput txOutput = TXOutput.newTXOutput(SUBSIDY, to);
         

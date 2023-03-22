@@ -4,6 +4,7 @@
  */
 package MVC.view;
 
+import MVC.controller.BlockchainManager;
 import MVC.model.utils.IPFSUtils;
 
 
@@ -39,9 +40,12 @@ public class Main {
 //        }
 
      try{
-         String hash = IPFSUtils.addContent("C:\\Users\\ssopt\\ipfsserver\\img1.jpg");
-            IPFSUtils.readContent(hash, "imgr");
-         System.out.println(hash);
+//         String hash = IPFSUtils.addContent("C:\\Users\\ssopt\\ipfsserver\\img1.jpg");
+//            IPFSUtils.readContent(hash, "imgr");
+//         System.out.println(hash);
+            BlockchainManager.upLoadImg("C:\\Users\\ssopt\\ipfsserver\\314771.jpg", "1AhAMqaDYz4DjBdTtWJGTARA6i4D9EtXns");
+            BlockchainManager.PinImg(BlockchainManager.curentHash);
+            BlockchainManager.FindImg(BlockchainManager.curentHash);
      }catch(Exception ex){
          ex.printStackTrace();
      }

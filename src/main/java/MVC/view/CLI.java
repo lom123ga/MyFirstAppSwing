@@ -68,7 +68,7 @@ public class CLI {
                 case "mineblock":
                     String minerAddress = cmd.getOptionValue("address");
                     String tx = args[3];
-                    minBlock(minerAddress,tx);
+                    minBlock(minerAddress,tx.getBytes());
                     break;
 
                 case "getbalance":
@@ -118,17 +118,17 @@ public class CLI {
         }
     }
 
-    private void findBlockData(String address) throws UnsupportedEncodingException {
+    private byte[] findBlockData(String address) throws UnsupportedEncodingException {
         Blockchain blockchain = Blockchain.initBlockchainFromDB();
         for (Blockchain.BlockchainIterator iterator = blockchain.getBlockchainIterator(); iterator.hashNext(); ) {
             Block block = iterator.next();
             if (block != null) {
                 if (block.getHash().equals(address)){
-                    System.out.println(new String(block.getTransactions()[0].getInputs()[0].getPubKey(),"US-ASCII"));
+                    return block.getTransactions()[0].getInputs()[0].getPubKey();
                 }
             }
         }
-        System.out.println("Fail to get Data!");
+        return "".getBytes();
     }
 
     private void validateArgs(String[] args) {
@@ -137,7 +137,7 @@ public class CLI {
         }
     }
 
-    private void minBlock(String from, String tx){
+    private void minBlock(String from, byte [] tx){
         Blockchain blockchain = Blockchain.createBlockchain(from);
         Transaction rewardTx = Transaction.newCoinbaseTX(from, tx);
         Block newBlock = blockchain.mineBlock(new Transaction[]{rewardTx});
@@ -218,7 +218,7 @@ public class CLI {
      
         Transaction transaction = Transaction.newUTXOTransaction(from, to, amount, blockchain);
       
-        Transaction rewardTx = Transaction.newCoinbaseTX(from, "");
+        Transaction rewardTx = Transaction.newCoinbaseTX(from, "".getBytes());
         Block newBlock = blockchain.mineBlock(new Transaction[]{transaction, rewardTx});
         new UTXOSet(blockchain).update(newBlock);
         System.out.println("Success!");

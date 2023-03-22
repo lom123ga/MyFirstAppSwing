@@ -47,7 +47,7 @@ public class Blockchain {
         if (StringUtils.isBlank(lastBlockHash)) {
            // create coinBase tx
             String genesisCoinbaseData = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
-            Transaction coinbaseTX = Transaction.newCoinbaseTX(address, genesisCoinbaseData);
+            Transaction coinbaseTX = Transaction.newCoinbaseTX(address, genesisCoinbaseData.getBytes());
             Block genesisBlock = Block.newGenesisBlock(coinbaseTX);
             lastBlockHash = genesisBlock.getHash();
             RocksDBUtils.getInstance().putBlock(genesisBlock);
