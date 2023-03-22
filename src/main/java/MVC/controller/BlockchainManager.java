@@ -11,6 +11,9 @@ import MVC.model.transaction.Transaction;
 import MVC.model.transaction.UTXOSet;
 import MVC.model.utils.IPFSUtils;
 import MVC.model.utils.SerializeUtils;
+import MVC.model.wallet.Wallet;
+import MVC.model.wallet.WalletUtils;
+import java.util.Set;
 
 /**
  *
@@ -94,5 +97,17 @@ public class BlockchainManager {
         String path = "IMG\\" + img.getName() + ".jpg";
         System.out.println(img.getName());
         return path;
+    }
+    
+    public static Set<String> FindAllAddress(){
+        Set<String> addresses = WalletUtils.getInstance().getAddresses();
+        
+        return addresses;
+    }
+    
+    public static String createWallet(){
+        Wallet wallet = WalletUtils.getInstance().createWallet();
+        System.out.println("wallet address : " + wallet.getAddress());
+        return wallet.getAddress();
     }
 }
