@@ -4,8 +4,8 @@
  */
 package MVC.view;
 
-import MVC.controller.BlockchainManager;
-import MVC.model.utils.IPFSUtils;
+import MVC.view.Dartboard.Dartboard;
+
 
 
 /**
@@ -39,16 +39,19 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-     try{
+//     try{
 //         String hash = IPFSUtils.addContent("C:\\Users\\ssopt\\ipfsserver\\img1.jpg");
 //            IPFSUtils.readContent(hash, "imgr");
 //         System.out.println(hash);
-            BlockchainManager.upLoadImg("C:\\Users\\ssopt\\ipfsserver\\314771.jpg", "1AhAMqaDYz4DjBdTtWJGTARA6i4D9EtXns");
-            BlockchainManager.PinImg(BlockchainManager.curentHash);
-            BlockchainManager.FindImg(BlockchainManager.curentHash);
-     }catch(Exception ex){
-         ex.printStackTrace();
-     }
+//            BlockchainManager.upLoadImg("C:\\Users\\ssopt\\ipfsserver\\314771.jpg", "1AhAMqaDYz4DjBdTtWJGTARA6i4D9EtXns");
+//            BlockchainManager.PinImg(BlockchainManager.curentHash);
+//            BlockchainManager.FindImg(BlockchainManager.curentHash);
+//     }catch(Exception ex){
+//         ex.printStackTrace();
+//     }
+        
+    
+        
 
     }
 }

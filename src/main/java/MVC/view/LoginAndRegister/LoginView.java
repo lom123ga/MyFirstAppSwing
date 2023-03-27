@@ -11,20 +11,23 @@ import MVC.view.LoginAndRegister.Swing.EventLogin;
  *
  * @author ssopt
  */
-public class MainView extends javax.swing.JFrame {
+public class LoginView extends javax.swing.JFrame {
+   
+    private Dartboard dartboard = new Dartboard();
     
-    private Dartboard dartboard;
+      
     /**
      * Creates new form LoginAndRegister
      */
-    public MainView() {
+    public LoginView() {
         initComponents();
-        dartboard = new Dartboard();
-        EventLogin event = new EventLogin(){
-          @Override
+        setLocationRelativeTo(null);
+        EventLogin event = new EventLogin() {
+            @Override
             public void loginDone() {
                 mainPanel.removeAll();
-                mainPanel.add(dartboard);
+                dartboard.setVisible(true);
+                setVisible(false);
                 mainPanel.revalidate();
                 mainPanel.repaint();
             }
@@ -33,9 +36,11 @@ public class MainView extends javax.swing.JFrame {
             public void logOut() {
                 mainPanel.removeAll();
                 mainPanel.add(loginAndRegister1);
+                setVisible(true);
+                dartboard.setVisible(false);
                 mainPanel.revalidate();
                 mainPanel.repaint();
-            }  
+            }
         };
         loginAndRegister1.setEventLogin(event);
         dartboard.setEventLogin(event);
@@ -54,6 +59,8 @@ public class MainView extends javax.swing.JFrame {
         loginAndRegister1 = new MVC.view.LoginAndRegister.Form.LoginAndRegister();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(900, 550));
+        setMinimumSize(new java.awt.Dimension(900, 550));
 
         mainPanel.setBackground(new java.awt.Color(203, 210, 171));
         mainPanel.setLayout(new java.awt.BorderLayout());
@@ -66,11 +73,11 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1219, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
 
         pack();
@@ -94,21 +101,23 @@ public class MainView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
-
+        //</editor-fold>
+        //</editor-fold>
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainView().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }
