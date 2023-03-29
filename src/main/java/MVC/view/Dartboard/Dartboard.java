@@ -4,6 +4,7 @@
  */
 package MVC.view.Dartboard;
 
+import MVC.controller.BlockchainManager;
 import MVC.view.Dartboard.Form.Form1;
 import MVC.view.Dartboard.Form.Form2;
 import MVC.view.Dartboard.Form.Form3;
@@ -13,9 +14,16 @@ import MVC.view.Dartboard.SubPanel.Panel;
 import MVC.view.Dartboard.swing.EventNavigationBar;
 import MVC.view.Dartboard.swing.NavigationBackgroundColor;
 import MVC.view.LoginAndRegister.Swing.EventLogin;
+import MVC.view.Message.GlassPanePopup;
+import MVC.view.Message.MessageConect;
+import MVC.view.Message.MessageNotconnect;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
 
 /**
  *
@@ -25,6 +33,20 @@ public class Dartboard extends javax.swing.JFrame {
 
     private EventLogin event;
     
+    private static boolean isConnect = false;
+    
+    private Form1 form1 = new Form1();
+    private Form2 form2 = new Form2();
+    private Form3 form3 = new Form3();
+    private Form4 form4 = new Form4();
+    private Form5 form5 = new Form5();
+    
+    public static boolean getConnect(){
+        return isConnect;
+    }
+    
+    private static String hash = "";
+    
     public void setEventLogin(EventLogin event) {
         this.event = event;
     }
@@ -33,6 +55,7 @@ public class Dartboard extends javax.swing.JFrame {
      */
     public Dartboard() {
         initComponents();
+        GlassPanePopup.install(this);
         setLocationRelativeTo(null);
         navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item1.png"));
         navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item2.png"));
@@ -43,15 +66,21 @@ public class Dartboard extends javax.swing.JFrame {
             @Override
             public void beforeSelected(int index) {
                 if (index == 0) {
-                    panel1.display(new Form1(), navigationBar1.getAnimator());
+                    form1 = new Form1();
+                    panel1.display(form1, navigationBar1.getAnimator());
                 } else if (index == 1) {
-                    panel1.display(new Form2(), navigationBar1.getAnimator());
+                    form2 = new Form2();
+                    panel1.display(form2, navigationBar1.getAnimator());
                 } else if (index == 2) {
-                    panel1.display(new Form3(), navigationBar1.getAnimator());
+                    form3 = new Form3();
+                    form3.checkConnect();
+                    panel1.display(form3, navigationBar1.getAnimator());
                 } else if (index == 3) {
-                    panel1.display(new Form4(), navigationBar1.getAnimator());
+                    form4 = new Form4();
+                    panel1.display(form4, navigationBar1.getAnimator());
                 } else if (index == 4) {
-                    panel1.display(new Form5(), navigationBar1.getAnimator());
+                    form5 = new Form5();
+                    panel1.display(form5, navigationBar1.getAnimator());
                 }
             }
 
@@ -62,11 +91,11 @@ public class Dartboard extends javax.swing.JFrame {
         });
         NavigationBackgroundColor nb = new NavigationBackgroundColor();
         nb.apply(getContentPane());
-        nb.addColor(0, new Color(212, 207, 233));
-        nb.addColor(1, new Color(207, 233, 225));
-        nb.addColor(2, new Color(210, 230, 233));
-        nb.addColor(3, new Color(220, 242, 230));
-        nb.addColor(4, new Color(226, 222, 233));
+        nb.addColor(0, new Color(243, 255, 255));
+        nb.addColor(1, new Color(243, 255, 255));
+        nb.addColor(2, new Color(243, 255, 255));
+        nb.addColor(3, new Color(243, 255, 255));
+        nb.addColor(4, new Color(243, 255, 255));
         navigationBar1.setnavigationBackgroundColor(nb);
         
         button2.addMouseListener(new MouseAdapter() {
@@ -77,7 +106,34 @@ public class Dartboard extends javax.swing.JFrame {
                 button2.setBackground(new Color(204, 225, 246));
             }
         });
+        
+        button1.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                button1.setBackground(new Color(203,200,220));
+            }
+            public void mouseExited(MouseEvent e) {
+                button1.setBackground(new Color(214, 214, 220));
+            }
+        });
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Terminate the program after the close button is clicked.
+                shutdown();
+                System.exit(0);
+            }
+        });
     }
+    
+   public void shutdown(){
+    try{
+        ProcessBuilder pb = new ProcessBuilder("cmd", "/c","powershell.exe","ipfs shutdown");
+        pb.start();
+    }catch(IOException e){
+                    
+    }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,7 +147,7 @@ public class Dartboard extends javax.swing.JFrame {
         navigationBar1 = new MVC.view.Dartboard.swing.NavigationBar();
         panel1 = new MVC.view.Dartboard.SubPanel.Panel();
         jPanel1 = new javax.swing.JPanel();
-        textField1 = new MVC.view.LoginAndRegister.Swing.TextField();
+        enterHash = new MVC.view.LoginAndRegister.Swing.TextField();
         button1 = new MVC.view.LoginAndRegister.Swing.Button();
         button2 = new MVC.view.LoginAndRegister.Swing.Button();
 
@@ -114,15 +170,16 @@ public class Dartboard extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(211, 225, 234));
+        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
 
-        textField1.setBorder(null);
-        textField1.setForeground(new java.awt.Color(167, 164, 164));
-        textField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        textField1.setHint("QmHash/basyHash");
+        enterHash.setBorder(null);
+        enterHash.setForeground(new java.awt.Color(167, 164, 164));
+        enterHash.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        enterHash.setHint("QmHash/basyHash");
 
-        button1.setBackground(new java.awt.Color(173, 173, 183));
-        button1.setForeground(new java.awt.Color(21, 24, 37));
+        button1.setBackground(new java.awt.Color(214, 214, 220));
+        button1.setForeground(new java.awt.Color(115, 115, 117));
+        button1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\brower.png")); // NOI18N
         button1.setText("Browse");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +205,7 @@ public class Dartboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(enterHash, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,7 +218,7 @@ public class Dartboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(enterHash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(4, 4, 4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,14 +251,49 @@ public class Dartboard extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         navigationBar1.initSelectedIndex(2);
+        hash = enterHash.getText();
     }//GEN-LAST:event_formWindowOpened
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
+        try{
+            Thread.sleep(300);
+        }catch(Exception e){
+            
+        }
+        
+        hash = enterHash.getText();
+        
+        navigationBar1.setSelectedIndex(1);
+        if (hash != null){
+            String nzme = "Name: " + BlockchainManager.FindImg(hash);
+            form2.setName(nzme);
+            
+        }
+        form2.setTable();
     }//GEN-LAST:event_button1ActionPerformed
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
+        try{
+            if (isConnect == false){
+                ProcessBuilder pb = new ProcessBuilder("cmd", "/c","powershell.exe","ipfs daemon");
+                pb.start();
+                isConnect = true;
+                GlassPanePopup.showPopup(new MessageConect());
+                form3.checkConnect();
+            }else{
+                ProcessBuilder pb = new ProcessBuilder("cmd", "/c","powershell.exe","ipfs shutdown");
+                pb.start();
+                isConnect = false;
+                GlassPanePopup.showPopup(new MessageNotconnect());
+                form3.checkConnect();
+            }
+        }catch(Exception e){
+            
+        }
+        
+        
     }//GEN-LAST:event_button2ActionPerformed
 
     /**
@@ -242,9 +334,9 @@ public class Dartboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private MVC.view.LoginAndRegister.Swing.Button button1;
     private MVC.view.LoginAndRegister.Swing.Button button2;
+    private MVC.view.LoginAndRegister.Swing.TextField enterHash;
     private javax.swing.JPanel jPanel1;
     private MVC.view.Dartboard.swing.NavigationBar navigationBar1;
     private MVC.view.Dartboard.SubPanel.Panel panel1;
-    private MVC.view.LoginAndRegister.Swing.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

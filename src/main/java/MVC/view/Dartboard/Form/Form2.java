@@ -5,18 +5,114 @@
 package MVC.view.Dartboard.Form;
 
 import MVC.view.Dartboard.SubPanel.SubPanel;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ssopt
  */
 public class Form2 extends SubPanel {
+   
 
+    private static final long serialVersionUID = 1L;
+    private DefaultTableModel tableModel;
     /**
      * Creates new form Form2
      */
     public Form2() {
         initComponents();
+        button1.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                button1.setBackground(new Color(245, 255, 255));
+            }
+            public void mouseExited(MouseEvent e) {
+                button1.setBackground(new Color(214, 213, 213));
+            }
+        });
+        
+        setTable();
+        
+    }
+    
+    
+    public void setName(String name){
+        hash.setText(name);
+    }
+    public void setTable(){
+        File folder = new File("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\IMG");
+        File[] files = folder.listFiles();
+        tableModel = (DefaultTableModel) table.getModel();
+       
+        int cont = tableModel.getRowCount();
+        
+        while (cont > 0){
+            tableModel.removeRow(cont - 1);
+            cont -= 1;
+        }
+        
+        for (File file : files) {
+            if (file.isFile()) {
+                try {
+                    String imageName = file.getName();
+                    
+                    String imagePath = file.getAbsolutePath();
+                    BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+                    String imageDate = attr.creationTime().toString();
+                   
+                    Object[] rowData = new Object[]{imageName, imageDate};
+                    tableModel.addRow(rowData);
+                } catch (IOException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }
+        }
+        
+        TableActionEvent event = new TableActionEvent() {
+            @Override
+            public void Open(int row) {
+                String name = null;
+                if (table.isEditing()) {
+                    name = (String) table.getModel().getValueAt(row, 0);
+                    System.out.println(name);
+                }
+                String url = "C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\IMG\\";
+                url += name;
+                
+                if (name != null){
+                    
+                    JFrame frame = new JFrame();
+                    frame.setSize(900, 550);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    
+                    ImageIcon img = new ImageIcon(url);
+                    JLabel label = new JLabel(img);
+                    frame.add(label);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
+                
+                
+            }
+        };
+        
+        
+        table.getColumnModel().getColumn(2).setCellRenderer(new TableActionCellRender());
+        table.getColumnModel().getColumn(2).setCellEditor(new TableActionCellEditor(event));
     }
 
     /**
@@ -28,19 +124,116 @@ public class Form2 extends SubPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        button1 = new MVC.view.LoginAndRegister.Swing.Button();
+        hash = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        scroll = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+
+        setPreferredSize(new java.awt.Dimension(900, 408));
+
+        jPanel1.setBackground(new java.awt.Color(229, 229, 229));
+        jPanel1.setForeground(new java.awt.Color(245, 245, 245));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\file.png")); // NOI18N
+
+        button1.setBackground(new java.awt.Color(214, 213, 213));
+        button1.setForeground(new java.awt.Color(169, 185, 252));
+        button1.setText("RELOAD");
+        button1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        hash.setBackground(new java.awt.Color(232, 232, 232));
+        hash.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hash.setText("name : ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99)
+                .addComponent(hash, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(hash))
+        );
+
+        jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Date", "Action"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setRowHeight(50);
+        scroll.setViewportView(table);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addComponent(scroll)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private MVC.view.LoginAndRegister.Swing.Button button1;
+    private javax.swing.JLabel hash;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

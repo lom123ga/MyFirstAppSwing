@@ -21,8 +21,10 @@ import java.util.Set;
  */
 public class BlockchainManager {
     public static String curentHash = "";
+    public static String cureentAddress = "1AhAMqaDYz4DjBdTtWJGTARA6i4D9EtXns";
     
-    public static void upLoadImg(String path, String address){
+    public static void upLoadImg(String path){
+        String address = cureentAddress;
         String hash = IPFSUtils.addContent(path);
         String name = "";
         int be,ed;
@@ -92,10 +94,17 @@ public class BlockchainManager {
                 }
             }
         }
-        Image img = (Image) SerializeUtils.deserialize(data);
-        IPFSUtils.readContent(img.getIpfsHash(), img.nameImg);
-        String path = "IMG\\" + img.getName() + ".jpg";
-        System.out.println(img.getName());
+        
+        String path = "Can not find image";
+        try{
+            Image img = (Image) SerializeUtils.deserialize(data);
+            IPFSUtils.readContent(img.getIpfsHash(), img.nameImg);
+            path = "IMG\\" + img.getName() + ".jpg";
+
+        }
+        catch (Exception e){
+            
+        }
         return path;
     }
     
