@@ -4,6 +4,13 @@
  */
 package MVC.view.LoginAndRegister.Form;
 
+import MVC.view.BINUtils;
+import MVC.view.Message.GlassPanePopup;
+import MVC.view.Message.MessageNotconnect;
+import MVC.view.Message.MessageRegister;
+import MVC.view.UserInfor;
+import java.util.List;
+
 /**
  *
  * @author ssopt
@@ -28,9 +35,9 @@ public class Register extends PanelCustom {
 
         jLabel1 = new javax.swing.JLabel();
         password1 = new MVC.view.LoginAndRegister.Swing.Password();
-        textField3 = new MVC.view.LoginAndRegister.Swing.TextField();
+        email = new MVC.view.LoginAndRegister.Swing.TextField();
         button1 = new MVC.view.LoginAndRegister.Swing.Button();
-        textField4 = new MVC.view.LoginAndRegister.Swing.TextField();
+        user = new MVC.view.LoginAndRegister.Swing.TextField();
 
         setBackground(new java.awt.Color(76, 76, 76));
         setForeground(new java.awt.Color(234, 227, 227));
@@ -45,14 +52,14 @@ public class Register extends PanelCustom {
         password1.setHint("Password");
         password1.setSelectedTextColor(new java.awt.Color(245, 238, 238));
 
-        textField3.setForeground(new java.awt.Color(255, 255, 255));
-        textField3.setCaretColor(new java.awt.Color(204, 204, 204));
-        textField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textField3.setHint("Email");
-        textField3.setSelectedTextColor(new java.awt.Color(241, 235, 235));
-        textField3.addActionListener(new java.awt.event.ActionListener() {
+        email.setForeground(new java.awt.Color(255, 255, 255));
+        email.setCaretColor(new java.awt.Color(204, 204, 204));
+        email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        email.setHint("Email");
+        email.setSelectedTextColor(new java.awt.Color(241, 235, 235));
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField3ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
 
@@ -60,15 +67,20 @@ public class Register extends PanelCustom {
         button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button1.setLabel("Sign Up");
-
-        textField4.setForeground(new java.awt.Color(242, 242, 242));
-        textField4.setCaretColor(new java.awt.Color(204, 204, 204));
-        textField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textField4.setHint("Username");
-        textField4.setSelectedTextColor(new java.awt.Color(241, 235, 235));
-        textField4.addActionListener(new java.awt.event.ActionListener() {
+        button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField4ActionPerformed(evt);
+                button1ActionPerformed(evt);
+            }
+        });
+
+        user.setForeground(new java.awt.Color(242, 242, 242));
+        user.setCaretColor(new java.awt.Color(204, 204, 204));
+        user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        user.setHint("Username");
+        user.setSelectedTextColor(new java.awt.Color(241, 235, 235));
+        user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userActionPerformed(evt);
             }
         });
 
@@ -81,9 +93,9 @@ public class Register extends PanelCustom {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                     .addComponent(password1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(user, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,9 +104,9 @@ public class Register extends PanelCustom {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
-                .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(password1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
@@ -103,20 +115,43 @@ public class Register extends PanelCustom {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField3ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void textField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField4ActionPerformed
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField4ActionPerformed
+    }//GEN-LAST:event_userActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+        String userName = user.getText().toString().trim();
+        String mail = email.getText().toString().trim();
+        String pass = String.valueOf(password1.getPassword()).trim();
+        List<UserInfor> list = BINUtils.read("UsersInfor.DAT");
+        boolean kt = true;
+        for (UserInfor it : list){
+            if (it.getName().equals(userName) && it.getEmail().equals(mail) ){
+                kt = false;
+                break;
+            }
+        }
+        
+        if (kt == true){
+            list.add(new UserInfor(userName,mail, pass));
+            BINUtils.write("UsersInfor.DAT",list);
+        }
+        user.setText("");
+        email.setText("");
+        password1.setText("");
+    }//GEN-LAST:event_button1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private MVC.view.LoginAndRegister.Swing.Button button1;
+    private MVC.view.LoginAndRegister.Swing.TextField email;
     private javax.swing.JLabel jLabel1;
     private MVC.view.LoginAndRegister.Swing.Password password1;
-    private MVC.view.LoginAndRegister.Swing.TextField textField3;
-    private MVC.view.LoginAndRegister.Swing.TextField textField4;
+    private MVC.view.LoginAndRegister.Swing.TextField user;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,11 @@
  */
 package MVC.view.LoginAndRegister.Form;
 
+import MVC.controller.BlockchainManager;
+import MVC.view.BINUtils;
 import MVC.view.LoginAndRegister.Swing.EventLogin;
+import MVC.view.UserInfor;
+import java.util.List;
 
 /**
  *
@@ -24,6 +28,10 @@ public class Login extends PanelCustom {
     
     public Login() {
         initComponents();
+        System.out.println(getClass().toString());
+        jButton1.setIcon(new javax.swing.ImageIcon("..\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\LoginAndRegister\\Icon\\facebook.png"));
+        jButton3.setIcon(new javax.swing.ImageIcon("..\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\LoginAndRegister\\Icon\\twitter.png"));
+        jButton4.setIcon(new javax.swing.ImageIcon("..\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\LoginAndRegister\\Icon\\google-plus.png"));
         setAlpha(1);
     }
 
@@ -38,7 +46,7 @@ public class Login extends PanelCustom {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        textField1 = new MVC.view.LoginAndRegister.Swing.TextField();
+        user = new MVC.view.LoginAndRegister.Swing.TextField();
         password1 = new MVC.view.LoginAndRegister.Swing.Password();
         button1 = new MVC.view.LoginAndRegister.Swing.Button();
         jLabel2 = new javax.swing.JLabel();
@@ -65,9 +73,9 @@ public class Login extends PanelCustom {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SIGN IN");
 
-        textField1.setForeground(new java.awt.Color(94, 90, 90));
-        textField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textField1.setHint("Username");
+        user.setForeground(new java.awt.Color(94, 90, 90));
+        user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        user.setHint("Username");
 
         password1.setForeground(new java.awt.Color(161, 158, 158));
         password1.setToolTipText("");
@@ -94,7 +102,6 @@ public class Login extends PanelCustom {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Or sign in with");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\LoginAndRegister\\Icon\\facebook.png")); // NOI18N
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +110,6 @@ public class Login extends PanelCustom {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\LoginAndRegister\\Icon\\twitter.png")); // NOI18N
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +118,6 @@ public class Login extends PanelCustom {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\LoginAndRegister\\Icon\\google-plus.png")); // NOI18N
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -123,8 +128,8 @@ public class Login extends PanelCustom {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                    .addComponent(textField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(password1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(button1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -135,7 +140,7 @@ public class Login extends PanelCustom {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(jButton3)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +148,7 @@ public class Login extends PanelCustom {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(password1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
@@ -172,8 +177,27 @@ public class Login extends PanelCustom {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-        if (getAlpha() == 0){
+        
+        String userName = user.getText().toString().trim();
+        String pass = String.valueOf(password1.getPassword()).trim();
+        List<UserInfor> list = BINUtils.read("UsersInfor.DAT");
+        boolean kt = false;
+        for (UserInfor it : list){
+            String name = it.getName().trim();
+            String pas = it.getPass().trim();
+            if (name.equals(userName) && pas.equals(pass)){
+                kt = true;
+                BlockchainManager.cureentAddress = it.getAddress();
+                System.out.println("AC");
+                break;
+            }
+        }
+        
+        if (getAlpha() == 0 && kt == true){
             event.loginDone();
+            
+        }else{
+            System.out.println("NO");
         }
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -187,6 +211,6 @@ public class Login extends PanelCustom {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private MVC.view.LoginAndRegister.Swing.Password password1;
-    private MVC.view.LoginAndRegister.Swing.TextField textField1;
+    private MVC.view.LoginAndRegister.Swing.TextField user;
     // End of variables declaration//GEN-END:variables
 }

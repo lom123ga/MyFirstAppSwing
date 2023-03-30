@@ -21,7 +21,7 @@ import java.util.Set;
  */
 public class BlockchainManager {
     public static String curentHash = "";
-    public static String cureentAddress = "1AhAMqaDYz4DjBdTtWJGTARA6i4D9EtXns";
+    public static String cureentAddress = "";
     
     public static void upLoadImg(String path){
         String address = cureentAddress;
