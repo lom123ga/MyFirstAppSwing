@@ -34,7 +34,7 @@ public class Form5 extends SubPanel {
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\worldnote.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/worldnote.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

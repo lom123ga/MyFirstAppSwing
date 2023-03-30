@@ -44,7 +44,7 @@ public class Form4 extends SubPanel {
 
         jLabel1.setBackground(new java.awt.Color(218, 218, 218));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\blockchain.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/blockchain.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(220, 221, 221));
 

@@ -57,11 +57,11 @@ public class Dartboard extends javax.swing.JFrame {
         initComponents();
         GlassPanePopup.install(this);
         setLocationRelativeTo(null);
-        navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item1.png"));
-        navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item2.png"));
-        navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item3.png"));
-        navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item4.png"));
-        navigationBar1.addItem(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\item5.png"));
+        navigationBar1.addItem(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/item1.png")));
+        navigationBar1.addItem(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/item2.png")));
+        navigationBar1.addItem(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/item3.png")));
+        navigationBar1.addItem(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/item4.png")));
+        navigationBar1.addItem(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/item5.png")));
         navigationBar1.addEvent(new EventNavigationBar() {
             @Override
             public void beforeSelected(int index) {
@@ -179,7 +179,7 @@ public class Dartboard extends javax.swing.JFrame {
 
         button1.setBackground(new java.awt.Color(214, 214, 220));
         button1.setForeground(new java.awt.Color(115, 115, 117));
-        button1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\brower.png")); // NOI18N
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/brower.png"))); // NOI18N
         button1.setText("Browse");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +190,7 @@ public class Dartboard extends javax.swing.JFrame {
 
         button2.setBackground(new java.awt.Color(204, 225, 246));
         button2.setForeground(new java.awt.Color(194, 204, 207));
-        button2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\connect.png")); // NOI18N
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/connect.png"))); // NOI18N
         button2.setMaximumSize(new java.awt.Dimension(30, 30));
         button2.setMinimumSize(new java.awt.Dimension(30, 30));
         button2.addActionListener(new java.awt.event.ActionListener() {

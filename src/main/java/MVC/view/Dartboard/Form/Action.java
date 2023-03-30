@@ -43,7 +43,7 @@ public class Action extends javax.swing.JPanel {
 
         actionButton1.setBackground(new java.awt.Color(204, 255, 255));
         actionButton1.setForeground(new java.awt.Color(0, 255, 0));
-        actionButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\image.png")); // NOI18N
+        actionButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/image.png"))); // NOI18N
         actionButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         actionButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

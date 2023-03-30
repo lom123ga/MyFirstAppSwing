@@ -130,7 +130,7 @@
               <Color blue="75" green="73" red="73" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ssopt\OneDrive\Documents\NetBeansProjects\MyFirstAppSwing\src\main\java\MVC\view\Dartboard\icon\brower.png"/>
+              <Image iconType="3" name="/MVC/view/Dartboard/icon/brower.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Browse"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -150,7 +150,7 @@
               <Color blue="cf" green="cc" red="c2" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ssopt\OneDrive\Documents\NetBeansProjects\MyFirstAppSwing\src\main\java\MVC\view\Dartboard\icon\connect.png"/>
+              <Image iconType="3" name="/MVC/view/Dartboard/icon/connect.png"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[30, 30]"/>

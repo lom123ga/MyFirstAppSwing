@@ -138,7 +138,7 @@ public class Form2 extends SubPanel {
         jPanel1.setForeground(new java.awt.Color(245, 245, 245));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ssopt\\OneDrive\\Documents\\NetBeansProjects\\MyFirstAppSwing\\src\\main\\java\\MVC\\view\\Dartboard\\icon\\file.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MVC/view/Dartboard/icon/file.png"))); // NOI18N
 
         button1.setBackground(new java.awt.Color(214, 213, 213));
         button1.setForeground(new java.awt.Color(169, 185, 252));
