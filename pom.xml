@@ -93,15 +93,25 @@
             <version>3.7.4</version>
         </dependency>
         <dependency>
-            <groupId>com.kenai.nbpwr</groupId>
-            <artifactId>org-jdesktop-animation-timing</artifactId>
-            <version>1.0-201002281504</version>
-            <classifier>tests</classifier>
-        </dependency>
-        <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE170</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.timingframework</groupId>
+            <artifactId>timingframework</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.java.timingframework/timingframework-swing -->
+        <dependency>
+            <groupId>net.java.timingframework</groupId>
+            <artifactId>timingframework-swing</artifactId>
+            <version>7.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.timingframework</groupId>
+            <artifactId>timingframework-core</artifactId>
+            <version>7.3.1</version>
         </dependency>
     </dependencies>
     <properties>

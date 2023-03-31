@@ -1,8 +1,10 @@
+package MVC.view;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package MVC.view.LoginAndRegister;
+
 
 import MVC.view.Dartboard.Dartboard;
 import MVC.view.LoginAndRegister.Swing.EventLogin;
@@ -59,7 +61,6 @@ public class LoginView extends javax.swing.JFrame {
         loginAndRegister1 = new MVC.view.LoginAndRegister.Form.LoginAndRegister();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 550));
         setMinimumSize(new java.awt.Dimension(900, 550));
 
         mainPanel.setBackground(new java.awt.Color(203, 210, 171));
