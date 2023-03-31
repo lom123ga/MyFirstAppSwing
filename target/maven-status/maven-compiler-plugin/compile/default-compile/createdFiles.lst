@@ -20,7 +20,6 @@ MVC\model\wallet\Wallet.class
 MVC\view\LoginAndRegister\Form\Register$1.class
 MVC\model\pow\PowResult.class
 MVC\view\Dartboard\SubPanel\SubPanel.class
-LoginView$1.class
 MVC\view\Message\Popup$2.class
 MVC\view\Dartboard\Dartboard$4.class
 MVC\model\transaction\SpendableOutputResult.class
@@ -34,8 +33,10 @@ MVC\view\Dartboard\Dartboard$3.class
 MVC\view\Dartboard\Form\SpeedTest$Loca.class
 MVC\view\Dartboard\Form\Form2$4.class
 MVC\view\LoginAndRegister\Form\LoginAndRegister$1.class
+MVC\view\LoginView$1.class
 MVC\view\Dartboard\Form\Action$2.class
 MVC\view\LoginAndRegister\Form\PanelCustom.class
+MVC\view\LoginView$2.class
 MVC\view\Message\Popup$1.class
 MVC\view\UserInfor.class
 MVC\view\LoginAndRegister\Swing\TextField.class
@@ -69,6 +70,7 @@ MVC\controller\BlockchainManager.class
 MVC\model\transaction\MerkleTree$Node.class
 MVC\view\Dartboard\Form\Form2.class
 MVC\view\Dartboard\swing\NavigationBar$3.class
+MVC\view\LoginView.class
 MVC\model\utils\ImageUtils.class
 MVC\model\utils\IPFSUtils.class
 MVC\model\utils\ByteUtils.class
@@ -91,7 +93,6 @@ MVC\model\transaction\UTXOSet.class
 MVC\view\LoginAndRegister\Form\Login$2.class
 MVC\view\Dartboard\swing\NavigationBar$2.class
 MVC\view\Dartboard\swing\NavigationBar$1.class
-LoginView$2.class
 MVC\view\LoginAndRegister\Form\Register$3.class
 MVC\view\Dartboard\Form\ActionButton$1.class
 MVC\view\Dartboard\SubPanel\Panel.class
@@ -100,5 +101,4 @@ MVC\model\wallet\WalletUtils.class
 MVC\view\LoginAndRegister\Swing\Button.class
 MVC\view\Dartboard\swing\ModelNavigationBar.class
 MVC\view\LoginAndRegister\Form\Register.class
-LoginView.class
 MVC\view\LoginAndRegister\Swing\EventLogin.class
