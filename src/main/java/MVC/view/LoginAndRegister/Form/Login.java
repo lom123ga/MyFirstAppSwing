@@ -195,7 +195,9 @@ public class Login extends PanelCustom {
             String pas = it.getPass().trim();
             if (name.equals(userName) && pas.equals(pass)){
                 kt = true;
+                System.out.println(it.getAddress());
                 BlockchainManager.cureentAddress = it.getAddress();
+                
                 System.out.println("AC");
                 break;
             }

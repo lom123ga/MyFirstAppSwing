@@ -68,6 +68,7 @@ public final class Base58Check {
     
     static byte[] base58ToRawBytes(String s) {
         // Parse base-58 string
+        if (s == null) s = "";
         BigInteger num = BigInteger.ZERO;
         for (int i = 0; i < s.length(); i++) {
             num = num.multiply(ALPHABET_SIZE);

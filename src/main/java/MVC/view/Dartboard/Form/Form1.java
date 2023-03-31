@@ -19,6 +19,7 @@ public class Form1 extends SubPanel {
     public Form1() {
         initComponents();
         gettext.setText("https://ipfs.io");
+        System.out.println(BlockchainManager.cureentAddress);
         address.setText(BlockchainManager.cureentAddress);
         
     }

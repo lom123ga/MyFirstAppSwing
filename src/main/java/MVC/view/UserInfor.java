@@ -4,6 +4,7 @@
  */
 package MVC.view;
 
+import MVC.controller.BlockchainManager;
 import java.io.Serializable;
 
 
@@ -23,7 +24,7 @@ public class UserInfor implements Serializable {
         this.mail = email;
         this.passWord = pass;
         
-        //this.address = BlockchainManager.createWallet();
+        this.address = BlockchainManager.createWallet();
     }
     
     public String getName(){
